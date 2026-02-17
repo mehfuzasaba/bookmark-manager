@@ -55,13 +55,13 @@ export default function Dashboard() {
   useEffect(() => {
     if (!user) return;
 
-    // Poll for changes every 3 seconds (silent refresh)
+    // Poll for changes every 5 seconds (silent refresh)
     const interval = setInterval(() => {
       fetchBookmarks(user.id, false);
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [user]);
+  }, [user, fetchBookmarks]);
 
   const handleAddBookmark = async (e: React.FormEvent) => {
     e.preventDefault();
